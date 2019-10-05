@@ -7,7 +7,7 @@ test('add', function (t) {
   t.deepEqual(out, [115n,24n])
   rat.set(out, 70n, 13n)
   rat.add(out, out, [5n,26n])
-  rat.simplify(out, out)
+  rat.reduce(out, out)
   t.deepEqual(out, [145n,26n])
   t.end()
 })
@@ -15,7 +15,7 @@ test('add', function (t) {
 test('add negative', function (t) {
   var out = [0n,1n]
   t.equal(rat.add(out, [-11n,3n], [9n,8n]), out)
-  rat.simplify(out, out)
+  rat.reduce(out, out)
   t.deepEqual(out, [-61n,24n])
   t.end()
 })
@@ -23,7 +23,7 @@ test('add negative', function (t) {
 test('subtract', function (t) {
   var out = [0n,1n]
   t.equal(rat.subtract(out, [115n,24n], [9n,8n]), out)
-  rat.simplify(out, out)
+  rat.reduce(out, out)
   t.deepEqual(out, [11n,3n])
   t.end()
 })
@@ -31,7 +31,7 @@ test('subtract', function (t) {
 test('multiply', function (t) {
   var out = [0n,1n]
   t.equal(rat.multiply(out, [13n,37n], [55n,3n]), out)
-  rat.simplify(out, out)
+  rat.reduce(out, out)
   t.deepEqual(out, [715n,111n])
   t.end()
 })
@@ -39,7 +39,7 @@ test('multiply', function (t) {
 test('divide', function (t) {
   var out = [0n,1n]
   t.equal(rat.divide(out, [715n,111n], [13n,37n]), out)
-  rat.simplify(out, out)
+  rat.reduce(out, out)
   t.deepEqual(out, [55n,3n])
   t.end()
 })
@@ -50,6 +50,23 @@ test('pow', function (t) {
   t.deepEqual(out, [1160290625n,16807n])
   rat.pow(out, [-5n,7n], 4n)
   t.deepEqual(out, [625n,2401n])
+  t.end()
+})
+
+test.only('negative pow', function (t) {
+  var out = [0n,1n]
+  t.equal(rat.pow(out, [65n,7n], -5n), out)
+  t.deepEqual(out, [16807n,1160290625n])
+  rat.pow(out, [-5n,7n], -4n)
+  t.deepEqual(out, [2401n,625n])
+  rat.pow(out, [65n,-7n], -5n)
+  t.deepEqual(out, [-16807n,1160290625n])
+  rat.pow(out, [-65n,7n], -5n)
+  t.deepEqual(out, [16807n,-1160290625n])
+  rat.pow(out, [-65n,-7n], -5n)
+  t.deepEqual(out, [-16807n,-1160290625n])
+  rat.pow(out, [-5n,-7n], -4n)
+  t.deepEqual(out, [2401n,625n])
   t.end()
 })
 
