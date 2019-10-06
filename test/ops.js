@@ -53,7 +53,7 @@ test('pow', function (t) {
   t.end()
 })
 
-test.only('negative pow', function (t) {
+test('negative pow', function (t) {
   var out = [0n,1n]
   t.equal(rat.pow(out, [65n,7n], -5n), out)
   t.deepEqual(out, [16807n,1160290625n])
@@ -67,6 +67,8 @@ test.only('negative pow', function (t) {
   t.deepEqual(out, [-16807n,-1160290625n])
   rat.pow(out, [-5n,-7n], -4n)
   t.deepEqual(out, [2401n,625n])
+  rat.pow(out, [-5n,7n], 0n)
+  t.deepEqual(out, [1n,1n])
   t.end()
 })
 
@@ -93,5 +95,25 @@ test('negate', function (t) {
   t.deepEqual(out, [5n,7n])
   rat.negate(out, [-5n,-7n])
   t.deepEqual(out, [-5n,7n])
+  t.end()
+})
+
+test('sign', function (t) {
+  t.equal(rat.sign([5n,7n]), 1n)
+  t.equal(rat.sign([-5n,7n]), -1n)
+  t.equal(rat.sign([5n,-7n]), -1n)
+  t.equal(rat.sign([-5n,-7n]), 1n)
+  t.equal(rat.sign([0n,1n]), 0n)
+  t.equal(rat.sign([0n,-1n]), 0n)
+  t.end()
+})
+
+test('reduce', function (t) {
+  var out = [0n,1n]
+  t.deepEqual(rat.reduce(out,[-5n,-1n]), [5n,1n])
+  t.deepEqual(rat.reduce(out,[10n,-5n]), [-2n,1n])
+  t.deepEqual(rat.reduce(out,[0n,7n]), [0n,1n])
+  t.deepEqual(rat.reduce(out,[0n,-7n]), [0n,1n])
+  t.deepEqual(rat.reduce(out,[-121n,-33n]), [11n,3n])
   t.end()
 })

@@ -1,0 +1,19 @@
+{
+  "name": "bigint-rational",
+  "version": "1.0.0",
+  "description": "rational arithmetic using built-in bigints",
+  "keywords": [
+    "rational",
+    "bigint",
+    "bignum",
+    "fraction",
+    "precision"
+  ],
+  "devDependencies": {
+    "tape": "^4.11.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "license": "BSD"
+}
