@@ -1,6 +1,6 @@
 {
   "name": "bigint-rational",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "rational arithmetic using built-in bigints",
   "keywords": [
     "rational",
