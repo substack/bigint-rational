@@ -182,7 +182,7 @@ Returns the stored result `out`.
 
 ## rat.subtract(out:rat, a:rat, b:rat)
 
-Subtract the rational `a` from the rational `b, storing the result in `out`.
+Subtract the rational `a` from the rational `b`, storing the result in `out`.
 
 Returns the stored result `out`.
 
