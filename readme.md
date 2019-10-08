@@ -51,6 +51,8 @@ same rational in the output and any of the arguments.
 As you perform operations on rationals, the numerator and denominator will tend
 to grow. Methods such as `add()` are implemented without computing a common
 denominator and instead work according to `a/b + c/d = (a*d + b*c) / (b*d)`.
+However, there are some special cases (such as the denominators being equal for
+addition and subtraction) to prevent the denominator from growing.
 
 You can simplify the fractions using the `reduce()` method. After reducing,
 operations will tend to be faster but the reduce method itself has a performance

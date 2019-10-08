@@ -20,11 +20,25 @@ test('add negative', function (t) {
   t.end()
 })
 
+test('add same denominator', function (t) {
+  var out = [0n,1n]
+  t.equal(rat.add(out, [4n,3n], [1n,3n]), out)
+  t.deepEqual(out, [5n,3n])
+  t.end()
+})
+
 test('subtract', function (t) {
   var out = [0n,1n]
   t.equal(rat.subtract(out, [115n,24n], [9n,8n]), out)
   rat.reduce(out, out)
   t.deepEqual(out, [11n,3n])
+  t.end()
+})
+
+test('subtract same denominator', function (t) {
+  var out = [0n,1n]
+  t.equal(rat.subtract(out, [5n,3n], [4n,3n]), out)
+  t.deepEqual(out, [1n,3n])
   t.end()
 })
 
@@ -36,11 +50,25 @@ test('multiply', function (t) {
   t.end()
 })
 
+test('multiply when numerator = denominator', function (t) {
+  var out = [0n,1n]
+  t.deepEqual(rat.multiply(out, [3n,7n], [7n,8n]), [3n,8n])
+  t.deepEqual(rat.multiply(out, [7n,3n], [8n,7n]), [8n,3n])
+  t.end()
+})
+
 test('divide', function (t) {
   var out = [0n,1n]
   t.equal(rat.divide(out, [715n,111n], [13n,37n]), out)
   rat.reduce(out, out)
   t.deepEqual(out, [55n,3n])
+  t.end()
+})
+
+test('divide same denominator', function (t) {
+  var out = [0n,1n]
+  t.equal(rat.divide(out, [4n,3n], [7n,3n]), out)
+  t.deepEqual(out, [4n,7n])
   t.end()
 })
 
