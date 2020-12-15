@@ -188,6 +188,15 @@ Subtract the rational `a` from the rational `b`, storing the result in `out`.
 
 Returns the stored result `out`.
 
+## rat.toDecimal(a:rat, precision:bigint=10n, radix:bigint=10n)
+
+Return a decimal approximation of the rational `a` as a string.
+
+The result will have the integer part followed by a `'.'` followed by
+`precision` digits (default: 10 digits).
+
+All the digits in the result are displaysed in base `radix` (default: 10).
+
 # license
 
 BSD
